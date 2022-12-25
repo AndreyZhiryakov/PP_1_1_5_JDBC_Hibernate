@@ -19,6 +19,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         String sqlCommand = "CREATE TABLE IF NOT EXISTS user (ID BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT, " +
                 "NAME VARCHAR(45) NOT NULL, LASTNAME VARCHAR(45) NOT NULL,AGE TINYINT NOT NULL)";
+
         try {
             statement = connection.createStatement();
             statement.executeUpdate(sqlCommand);
@@ -59,6 +60,7 @@ public class UserDaoJDBCImpl implements UserDao {
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
         String sqlCommand = "INSERT INTO user (NAME, LASTNAME, AGE) VALUES(?,?,?)";
+
         try {
             preparedStatement = connection.prepareStatement(sqlCommand);
             preparedStatement.setString(1, name);
@@ -101,7 +103,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() throws SQLException {
         Connection connection = Util.getConnection();
     List<User> userList = new ArrayList<>();
-    String sqlCommand = "SELECT ID, NAME, LASTNAME, AGE";
+    String sqlCommand = "SELECT * FROM user";
     Statement statement = null;
     try {
         statement = connection.createStatement();
