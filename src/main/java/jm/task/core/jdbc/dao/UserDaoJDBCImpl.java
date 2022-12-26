@@ -40,7 +40,7 @@ public class UserDaoJDBCImpl implements UserDao {
         User user = new User();
         Connection connection = Util.getConnection();
         Statement statement = null;
-        String sqlCommand = "DROP TABLE user";
+        String sqlCommand = "DROP TABLE IF EXISTS user";
         try {
             statement = connection.createStatement();
             statement.executeUpdate(sqlCommand);
@@ -132,7 +132,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() throws SQLException {
-        User user = new User();
+        //User user = new User();
         Connection connection = Util.getConnection();
         Statement statement = null;
 
